@@ -4,39 +4,42 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
+    private Rigidbody2D rb;
+
     private float direction = 7f;
 
     [SerializeField]
     private float moveSpeed = 7f;
 
     [SerializeField]
-    private float jumpSpeed = 14f;
-    private Rigidbody2D rb;
-    private BoxCollider2D coll;
+    private float jumpSpeed = 6f;
 
-    [SerializeField]
-    private LayerMask groundLayers;
+    bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<BoxCollider2D>();  
     }
-
 
     void Update()
     {
         direction = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
+            isGrounded = false;
         }
     }
 
-    bool IsGrounded()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, groundLayers);
+        isGrounded = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isGrounded = false;
     }
 }

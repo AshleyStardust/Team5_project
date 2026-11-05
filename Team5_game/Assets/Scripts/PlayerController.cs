@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+<<<<<<< HEAD
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -54,4 +55,6 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = false;
     }
+=======
+>>>>>>> death-by-spikes-code
 }

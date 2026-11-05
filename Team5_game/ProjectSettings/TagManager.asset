@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Spike
+>>>>>>> death-by-spikes-code
   layers:
   - Default
   - TransparentFX

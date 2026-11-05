@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     private float direction = 7f;
 
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = rb.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -30,6 +32,16 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
             isGrounded = false;
+        }
+
+        if (direction > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        if (direction < 0)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 

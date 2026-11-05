@@ -22,8 +22,9 @@ public class KillPlayerOnCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             /*Destroy the player game object*/
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
             //Destroy(GameObject.FindGameObjectWithTag("Player"));
+            Destroy(other.gameObject);
 
         }
     }

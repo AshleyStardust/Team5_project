@@ -11,7 +11,7 @@ public class KillPlayerOnCollision : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    /*Update is caled once per frame*/
+    /*Update is called once per frame*/
     void Update()
     {
         

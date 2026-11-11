@@ -2355,7 +2355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3707061533785588053, guid: 4bcd2b2e23f8517419f9a98b5d759fe6, type: 3}
       propertyPath: m_TagString
-      value: Spike
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6160006267323423006, guid: 4bcd2b2e23f8517419f9a98b5d759fe6, type: 3}
       propertyPath: m_LocalPosition.x

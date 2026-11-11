@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   pointA: {fileID: 774010565}
   pointB: {fileID: 155923603}
-  speed: 4
+  speed: 3
 --- !u!58 &156105791
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -1,49 +1,67 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
+    public GameObject pointA;
+    public GameObject pointB;
+
+    private Transform currentPoint;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 
-    private float direction = 7f;
-
-    [SerializeField]
-    private float moveSpeed = 4f;
-    public bool isGrounded;
-
+    public float speed;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
+        currentPoint = pointB.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        while (isGrounded == true)
+        Vector2 point = currentPoint.position - transform.position;
+        if (currentPoint == pointB.transform)
         {
-            rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(speed, 0);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(-speed, 0);
         }
 
-        if (direction > 0)
+        if(Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == pointB.transform)
+        {
+            currentPoint = pointA.transform;
+        }
+
+        if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == pointA.transform)
+        {
+            currentPoint = pointB.transform;
+        }
+
+        if (currentPoint == pointB.transform)
         {
             spriteRenderer.flipX = true;
         }
 
-        if (direction < 0)
+        if (currentPoint == pointA.transform)
         {
             spriteRenderer.flipX = false;
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    //he dies to the enemy
+    /*void OnCollisionEnter2D(Collision2D other)
     {
-        isGrounded = true;
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        isGrounded = false;
-    }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(other.gameObject);
+        }
+    }*/
 }

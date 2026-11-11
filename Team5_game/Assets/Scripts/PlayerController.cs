@@ -67,11 +67,26 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             hasKey = true;
             hasKeyImage.SetActive(true);
+        } 
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            if (isGrounded == false)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
+                Destroy(other.gameObject);
+            }
+
+            if (isGrounded == true)
+            {
+                Destroy(this.gameObject);
+            }
         }
-
-        
     }
 
-  
-  
-    }
+
+
+}

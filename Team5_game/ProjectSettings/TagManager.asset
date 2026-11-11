@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 3
   tags:
   - PickUp_Key
-  - Spike
-  - Enemy
   layers:
   - Default
   - TransparentFX

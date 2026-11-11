@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,16 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpSpeed = 6f;
 
-    public bool isGrounded;
-    public bool hasKey = false;
-
-    public GameObject hasKeyImage;
+    bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
-        hasKeyImage.SetActive(false);
     }
 
     void Update()
@@ -50,28 +45,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         isGrounded = true;
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("PickUp_Key"))
-        {
-            other.gameObject.SetActive(false);
-            hasKey = true;
-            hasKeyImage.SetActive(true);
-        }
-
-        
-    }
-
-  
-  
-    }
+}

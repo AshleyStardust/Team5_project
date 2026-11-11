@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-
+    private Animator anim;
     private float direction = 7f;
 
     [SerializeField]
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         hasKeyImage.SetActive(false);
     }
 
@@ -82,8 +83,17 @@ public class PlayerController : MonoBehaviour
 
             if (isGrounded == true)
             {
-                Destroy(this.gameObject);
+                Destroy(this);
+                spriteRenderer.flipY = true;
+                anim.enabled = false;
             }
+        }
+
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            Destroy(this);
+            spriteRenderer.flipY = true;
+            anim.enabled = false;
         }
     }
 

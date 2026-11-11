@@ -3,12 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
-  - Spike
->>>>>>> death-by-spikes-code
+  - PickUp_Key
   layers:
   - Default
   - TransparentFX
@@ -16,7 +12,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - groundLayer
   - 
   - 
   - 

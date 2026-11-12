@@ -1,7 +1,8 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
 
     public bool isGrounded;
     public bool hasKey = false;
+
+    /*gets the build index of the current scene in the build profile*/
+    public int buildIndex { get; }
 
     public GameObject hasKeyImage;
 
@@ -71,6 +75,7 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -94,6 +99,15 @@ public class PlayerController : MonoBehaviour
             Destroy(this);
             spriteRenderer.flipY = true;
             anim.enabled = false;
+        }
+
+        /*loads next level if player collides with Door while having the key*/
+        if (other.gameObject.name=="Door")
+        {
+            if (hasKey == true)
+            {
+                SceneManager.LoadScene(buildIndex + 1);
+            }
         }
     }
 

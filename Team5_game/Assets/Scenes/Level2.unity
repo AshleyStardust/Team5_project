@@ -513,6 +513,7 @@ MonoBehaviour:
   pointA: {fileID: 1887872549}
   pointB: {fileID: 406993908}
   speed: 3
+  Player: {fileID: 0}
 --- !u!58 &147723522
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2967,7 +2968,6 @@ GameObject:
   - component: {fileID: 1127648625}
   - component: {fileID: 1127648624}
   - component: {fileID: 1127648623}
-  - component: {fileID: 1127648622}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -2975,19 +2975,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1127648622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127648621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522fe0865a32fb247baa7157d206aeea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  hasKey: 0
 --- !u!50 &1127648623
 Rigidbody2D:
   serializedVersion: 5

@@ -349,7 +349,7 @@ GameObject:
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &270868391
 RectTransform:
   m_ObjectHideFlags: 0
@@ -914,11 +914,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8674130e656ef754e87ed13a7d4de257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 10
+  moveSpeed: 7
   jumpSpeed: 16
   isGrounded: 0
   hasKey: 0
   hasKeyImage: {fileID: 270868390}
+  LoseText: {fileID: 0}
 --- !u!50 &775196131
 Rigidbody2D:
   serializedVersion: 5

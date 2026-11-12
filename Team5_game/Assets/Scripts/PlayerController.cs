@@ -20,13 +20,14 @@ public class PlayerController : MonoBehaviour
     public bool hasKey = false;
 
     public GameObject hasKeyImage;
+    public GameObject LoseText;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        hasKeyImage.SetActive(false);
+        LoseText = GameObject.FindWithTag("LoseText");
     }
 
     void Update()
@@ -49,21 +50,37 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+
+        if (anim.enabled == false)
+        {
+            LoseText.SetActive(true);
+        }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D other)
     {
-        isGrounded = true;
+        if (other.gameObject.name == "Ground")
+        {
+            isGrounded = true;
+        }
+
+        else
+        {
+            isGrounded = false;
+        }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D other)
     {
-        isGrounded = false;
+        if (other.gameObject.name == "Ground")
+        {
+            isGrounded = false;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("PickUp_Key"))
+        if (other.gameObject.name == "PickUp_Key")
         {
             other.gameObject.SetActive(false);
             hasKey = true;
@@ -73,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.name == "Enemy")
         {
             if (isGrounded == false)
             {
@@ -89,14 +106,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Spikes"))
+        if (other.gameObject.name == "Spikes")
         {
             Destroy(this);
             spriteRenderer.flipY = true;
             anim.enabled = false;
         }
 
-        if (other.gameObject.CompareTag("SpikyEnemy"))
+        if (other.gameObject.name == "SpikyEnemy")
         {
             Destroy(this);
             spriteRenderer.flipY = true;

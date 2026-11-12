@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
             if (isGrounded == false)
             {
@@ -104,9 +104,10 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.flipY = true;
                 anim.enabled = false;
             }
+
         }
 
-        if (other.gameObject.name == "Spikes")
+        if (other.gameObject.CompareTag("Spikes"))
         {
             Destroy(this);
             spriteRenderer.flipY = true;

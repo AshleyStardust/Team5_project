@@ -10,12 +10,16 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator anim;
     private float direction = 7f;
+    private float vertical = 7f;
 
     [SerializeField]
     private float moveSpeed = 7f;
 
     [SerializeField]
     private float jumpSpeed = 6f;
+
+    [SerializeField]
+    private float climbSpeed = 6f;
 
     public bool isGrounded;
     public bool hasKey = false;
@@ -72,9 +76,19 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             hasKey = true;
             hasKeyImage.SetActive(true);
-        } 
-    }
+        }
 
+        /*player moves up ladder if they collide with ladder and press W*/
+        vertical = Input.GetAxisRaw("Vertical");
+        if (other.gameObject.CompareTag("Ladder"))
+        {
+            if (Input.GetKeyDown(KeyCode.W) == true)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
+            }
+            
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {

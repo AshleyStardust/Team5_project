@@ -3,12 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
-  - Spike
->>>>>>> death-by-spikes-code
+  - PickUp_Key
+  - Enemy
+  - Ladder
+  - Spikes
   layers:
   - Default
   - TransparentFX
@@ -16,7 +15,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - groundLayer
   - 
   - 
   - 

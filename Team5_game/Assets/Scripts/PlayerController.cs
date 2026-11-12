@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-
+    private Animator anim;
     private float direction = 7f;
 
     [SerializeField]
@@ -15,12 +16,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpSpeed = 6f;
 
-    bool isGrounded;
+    public bool isGrounded;
+    public bool hasKey = false;
+
+    public GameObject hasKeyImage;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        hasKeyImage.SetActive(false);
     }
 
     void Update()
@@ -45,14 +51,52 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
         isGrounded = true;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PickUp_Key"))
+        {
+            other.gameObject.SetActive(false);
+            hasKey = true;
+            hasKeyImage.SetActive(true);
+        } 
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            if (isGrounded == false)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
+                Destroy(other.gameObject);
+            }
+
+            if (isGrounded == true)
+            {
+                Destroy(this);
+                spriteRenderer.flipY = true;
+                anim.enabled = false;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            Destroy(this);
+            spriteRenderer.flipY = true;
+            anim.enabled = false;
+        }
+    }
+
+
 
 }

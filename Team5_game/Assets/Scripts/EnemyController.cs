@@ -66,13 +66,4 @@ public class EnemyController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-
-    //he dies to the enemy
-    /*void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Destroy(other.gameObject);
-        }
-    }*/
 }

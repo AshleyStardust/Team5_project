@@ -95,6 +95,13 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipY = true;
             anim.enabled = false;
         }
+
+        if (other.gameObject.CompareTag("SpikyEnemy"))
+        {
+            Destroy(this);
+            spriteRenderer.flipY = true;
+            anim.enabled = false;
+        }
     }
 
 

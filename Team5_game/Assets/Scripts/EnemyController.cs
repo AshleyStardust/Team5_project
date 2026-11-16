@@ -5,14 +5,16 @@ using System;
 
 public class EnemyController : MonoBehaviour
 {
+    public float speed;
+
     public GameObject pointA;
     public GameObject pointB;
 
     private Transform currentPoint;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+
     private Animator playerAnim;
-    public float speed;
     public GameObject Player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,8 +31,12 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Vector2 point = currentPoint.position - transform.position;
+
+        //Enemies stop moving when player dies
         if (playerAnim.enabled == true)
         {
+
+            //Enemies patrol between two points on the ground
             if (currentPoint == pointB.transform)
             {
                 rb.linearVelocity = new Vector2(speed, 0);
@@ -56,6 +62,8 @@ public class EnemyController : MonoBehaviour
             rb.linearVelocity = new Vector2(speed, 0);
         }
 
+
+        //Enemy sprite faces correct movement direction
         if (currentPoint == pointB.transform)
         {
             spriteRenderer.flipX = true;

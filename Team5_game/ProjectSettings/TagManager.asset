@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Ladder
   - Spikes
+  - LoseText
   layers:
   - Default
   - TransparentFX

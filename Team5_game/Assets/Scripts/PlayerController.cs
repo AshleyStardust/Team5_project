@@ -127,6 +127,14 @@ public class PlayerController : MonoBehaviour
                 LoseText.SetActive(true);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); /*line of code to reload current scene on player death after 3 secs*/
             }
+            if (other.gameObject.name == "SpikyEnemy")
+            {
+                Destroy(this);
+                spriteRenderer.flipY = true;
+                anim.enabled = false;
+                LoseText.SetActive(true);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); /*line of code to reload current scene on player death after 3 secs*/
+            }
         }
 
         if (other.gameObject.CompareTag("Spikes"))

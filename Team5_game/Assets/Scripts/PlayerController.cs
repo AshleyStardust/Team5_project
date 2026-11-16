@@ -1,7 +1,8 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,15 +20,17 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public bool hasKey = false;
 
+    /*gets the build index of the current scene in the build profile*/
+    public int buildIndex { get; }
+
     public GameObject hasKeyImage;
-    public GameObject LoseText;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        LoseText = GameObject.FindWithTag("LoseText");
+        hasKeyImage.SetActive(false);
     }
 
     void Update()
@@ -50,43 +53,28 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-
-        if (anim.enabled == false)
-        {
-            LoseText.SetActive(true);
-        }
     }
 
-    void OnCollisionStay2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D collision)
     {
-        if (other.gameObject.name == "Ground")
-        {
-            isGrounded = true;
-        }
-
-        else
-        {
-            isGrounded = false;
-        }
+        isGrounded = true;
     }
 
-    void OnCollisionExit2D(Collision2D other)
+    void OnCollisionExit2D(Collision2D collision)
     {
-        if (other.gameObject.name == "Ground")
-        {
-            isGrounded = false;
-        }
+        isGrounded = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "PickUp_Key")
+        if (other.gameObject.CompareTag("PickUp_Key"))
         {
             other.gameObject.SetActive(false);
             hasKey = true;
             hasKeyImage.SetActive(true);
         } 
     }
+
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -104,7 +92,6 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.flipY = true;
                 anim.enabled = false;
             }
-
         }
 
         if (other.gameObject.CompareTag("Spikes"))
@@ -114,11 +101,13 @@ public class PlayerController : MonoBehaviour
             anim.enabled = false;
         }
 
-        if (other.gameObject.name == "SpikyEnemy")
+        /*loads next level if player collides with Door while having the key*/
+        if (other.gameObject.name=="Door")
         {
-            Destroy(this);
-            spriteRenderer.flipY = true;
-            anim.enabled = false;
+            if (hasKey == true)
+            {
+                SceneManager.LoadScene(buildIndex + 1);
+            }
         }
     }
 

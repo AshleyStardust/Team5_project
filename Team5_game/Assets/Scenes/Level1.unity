@@ -914,12 +914,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8674130e656ef754e87ed13a7d4de257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  JumpPadAnim: {fileID: 0}
   moveSpeed: 7
   jumpSpeed: 16
   isGrounded: 0
   hasKey: 0
   hasKeyImage: {fileID: 270868390}
   LoseText: {fileID: 1637956298}
+  JumpPad: {fileID: 0}
+  WinText: {fileID: 0}
 --- !u!50 &775196131
 Rigidbody2D:
   serializedVersion: 5
@@ -2721,9 +2724,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2180aecbc6fdd7428c630143b67572b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  speed: 3
   pointA: {fileID: 1887872549}
   pointB: {fileID: 406993908}
-  speed: 3
   Player: {fileID: 0}
 --- !u!58 &1572910404
 CircleCollider2D:

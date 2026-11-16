@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.flipY = true;
                 anim.enabled = false;
                 LoseText.SetActive(true);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); /*line of code to reload current scene on player death after 3 secs*/
             }
         }
 
@@ -134,6 +135,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipY = true;
             anim.enabled = false;
             LoseText.SetActive(true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); /*line of code to reload current scene on player death after 3 secs*/
         }
 
         /*loads next level if player collides with Door while having the key*/

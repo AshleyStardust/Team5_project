@@ -501,7 +501,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108823284}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e6efb7ee9261bd44a9013b0fd4e4b17e, type: 2}
   m_CullingMode: 0
@@ -570,9 +570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2180aecbc6fdd7428c630143b67572b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  speed: 3
   pointA: {fileID: 1887872549}
   pointB: {fileID: 406993908}
-  speed: 3
   Player: {fileID: 775196128}
 --- !u!58 &147723522
 CircleCollider2D:
@@ -2528,9 +2528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2180aecbc6fdd7428c630143b67572b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  speed: 3
   pointA: {fileID: 1836499550}
   pointB: {fileID: 1182821261}
-  speed: 3
   Player: {fileID: 775196128}
 --- !u!1 &1033331081
 GameObject:

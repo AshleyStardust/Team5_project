@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Timers;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AdaptivePerformance.Provider;
 using UnityEngine.SceneManagement;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     /*gets the build index of the current scene in the build profile*/
     public int buildIndex { get; }
+   
 
     public GameObject hasKeyImage;
 
@@ -105,6 +107,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipY = true;
             anim.enabled = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); /*line of code to reload current scene on player death after 3 secs*/
+
         }
 
         /*loads next level if player collides with Door while having the key*/

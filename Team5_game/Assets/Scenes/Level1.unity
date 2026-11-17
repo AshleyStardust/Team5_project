@@ -922,7 +922,7 @@ MonoBehaviour:
   hasKeyImage: {fileID: 270868390}
   LoseText: {fileID: 1637956298}
   JumpPad: {fileID: 0}
-  WinText: {fileID: 0}
+  WinText: {fileID: 1170302006}
 --- !u!50 &775196131
 Rigidbody2D:
   serializedVersion: 5
@@ -2883,7 +2883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1637956299
 RectTransform:
   m_ObjectHideFlags: 0

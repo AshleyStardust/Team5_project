@@ -7,19 +7,19 @@ public class EnemyController : MonoBehaviour
 {
     public float speed;
 
+    //Variables for all components and game objects needed
     public GameObject pointA;
     public GameObject pointB;
-
     private Transform currentPoint;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-
     private Animator playerAnim;
     public GameObject Player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Getting all components and assigning them to the variables
         Player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
     {
         Vector2 point = currentPoint.position - transform.position;
 
-        //Enemies stop moving when player dies
+        //Enemies only move while player is alive and playing
         if (playerAnim.enabled == true)
         {
 
@@ -56,6 +56,8 @@ public class EnemyController : MonoBehaviour
                 currentPoint = pointB.transform;
             }
         }
+
+        //Enemies stop moving when player dies
         else
         {
             speed = 0;
